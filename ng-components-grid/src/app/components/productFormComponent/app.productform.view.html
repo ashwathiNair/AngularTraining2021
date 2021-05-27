@@ -1,0 +1,86 @@
+<h1>Product Catalog</h1>
+<table class='table table-bordered table-striped'>
+    <tbody>
+        <tr>
+            <td>
+                <form [formGroup]="formProduct" (ngSubmit)="save()">
+                <div class="container">
+                    <div class="form-group">
+                        <label>Product Id</label>
+                        <input type="text" class="form-control" formControlName="Id">
+                        <div class="alert alert-danger"
+                         *ngIf="formProduct.controls.Id.dirty&&!formProduct.controls.Id.valid">
+                            <p *ngIf="formProduct.controls.Id.errors?.required">Value is Mandatory</p>
+                            <p *ngIf="formProduct.controls.Id.errors?.minlength">Value must be 2 digits in Length</p>
+                            <p *ngIf="formProduct.controls.Id.errors?.maxlength">Value is can be max 8 digits</p>
+                            <p *ngIf="formProduct.controls.Id.errors?.pattern">Value must be numeric</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" class="form-control" formControlName="Name">
+                        <div class="alert alert-danger"
+                         *ngIf="formProduct.controls.Name.dirty&&!formProduct.controls.Name.valid">
+                            <p *ngIf="formProduct.controls.Name.errors?.required">Value is Mandatory</p>
+                            <p *ngIf="formProduct.controls.Name.errors?.pattern">Name must be alphabetical and starting with Uppercase</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Description</label>
+                        <input type="text" class="form-control" formControlName="Description">
+                        <div class="alert alert-danger"
+                         *ngIf="formProduct.controls.Description.dirty&&!formProduct.controls.Description.valid">
+                            <p *ngIf="formProduct.controls.Description.errors?.required">Value is Mandatory</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Category</label>
+                        <input type="text" class="form-control" formControlName="Category">
+                        <div class="alert alert-danger"
+                         *ngIf="formProduct.controls.Category.dirty&&!formProduct.controls.Category.valid">
+                            <p *ngIf="formProduct.controls.Category.errors?.required">Value is Mandatory</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Price</label>
+                        <input type="text" class="form-control" formControlName="Price">
+                        <div class="alert alert-danger"
+                         *ngIf="formProduct.controls.Price.dirty&&!formProduct.controls.Price.valid">
+                            <p *ngIf="formProduct.controls.Price.errors?.required">Value is Mandatory</p>
+                            <p *ngIf="formProduct.controls.Price.errors?.pattern">Value must be a positive integer only</p>
+                            <p *ngIf="formProduct.controls.Price.errors?.min">Value must be a positive integer only</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" value="Save" [disabled]="!formProduct.valid">
+                        <input type="button" class="btn btn-primary" (click)="clear()" value="Clear">
+                    </div>
+                </div>
+            </form>
+            </td>
+            <td>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th >ProductId</th>
+                        <th >ProductName</th>
+                        <th >ProductPrice</th>
+                        <th >Description</th>
+                        <th >Category</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr *ngFor='let p of products' (click)="getSelectedProduct(p)">
+                        <td>{{p.Id}}</td>
+                        <td>{{p.Name}}</td>
+                        <td>{{p.Price}}</td>
+                        <td>{{p.Category}}</td>
+                        <td>{{p.Description}}</td>
+                        <td>
+                            <input type="button" value="X" (click)="delete(p)">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+    
+</table>

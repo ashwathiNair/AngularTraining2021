@@ -1,0 +1,36 @@
+<div>
+  <table style="width: 100%;">
+    <tr>
+      <input type="text"  value="{{result}}">
+    </tr>
+    <tr>
+      <input type="text"  value="{{input}}">
+    </tr>
+    <tr>
+      <input type="button"  (click)="clear()" value='AC'>
+    </tr>
+    <tr>
+      <input type="button"  (click)="keypress('7')" value='7'>
+      <input type="button"  (click)="keypress('8')" value='8'>
+      <input type="button"  (click)="keypress('9')" value='9'>
+      <input type="button"  (click)="keypress('x')" value='x'>
+    </tr>
+    <tr>
+      <input type="button"  (click)="keypress('4')" value='4'>
+      <input type="button"  (click)="keypress('5')" value='5'>
+      <input type="button"  (click)="keypress('6')" value='6'>
+      <input type="button"  (click)="keypress('-')" value='-'>
+    </tr>
+    <tr>
+      <input type="button"  (click)="keypress('3')" value='3'>
+      <input type="button"  (click)="keypress('2')" value='2'>
+      <input type="button"  (click)="keypress('1')" value='1'>
+      <input type="button"  (click)="keypress('+')" value='+'>
+    </tr>
+    <tr>
+      <input type="button"  (click)="keypress('0')" value='0'>
+      <input type="button"  (click)="keypress('.')" value='.'> 
+      <input type="button"  (click)="getResult()" value='='>
+    </tr>
+  </table>
+</div>

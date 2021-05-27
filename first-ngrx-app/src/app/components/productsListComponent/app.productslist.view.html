@@ -1,0 +1,16 @@
+<h1>The List of Products</h1>
+<div class="container">
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th *ngFor="let header of columnHeaders">{{header}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--use the async pipe to auto-subscribe to observable and read data from it once it is available in observable-->
+        <tr *ngFor="let prd of products$|async">
+            <td *ngFor="let header of columnHeaders">{{prd[header]}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
