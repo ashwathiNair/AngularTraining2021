@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from './../../models/app.product.model'
+import { Store,select } from "@ngrx/store";
+import { IAppState } from "./../../state/app.state";
+import { ProductActions } from "./../../actions/index";
+import { selectProductsList } from "./../../selectors/app.product.selector";
 
 @Component({
     selector: 'app-productslist-component',
@@ -9,10 +13,15 @@ import {Product} from './../../models/app.product.model'
 export class ProductsListComponent implements OnInit {
     product:Product;
     columnHeaders:Array<string>;
-    constructor() { 
+    products$= this.store.pipe(select(selectProductsList));
+    constructor(private store: Store<IAppState>) { 
         this.product = new Product();
         this.columnHeaders = new Array<string>();
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+
+        this.columnHeaders = Object.keys(this.product);
+        this.store.dispatch(ProductActions.getProducts());
+     }
 }
