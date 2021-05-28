@@ -12,11 +12,13 @@ export class ProductComponent implements OnInit{
     products:Array<Product>;
     private logic:ProductLogic;
     columnHeaders:Array<string>;
+    tax:number;
     constructor(){
         this.product = new Product();
         this.products = new Array<Product>();
         this.logic = new ProductLogic();
         this.columnHeaders = new Array<string>();
+        this.tax=0;
     }
 
     ngOnInit():void{
@@ -30,6 +32,7 @@ export class ProductComponent implements OnInit{
 
     save():void{
         this.logic.saveProducts(this.product)
+        this.tax = this.product.Price * 0.2;
     }
 
     getSelectedProduct(p:Product):void {

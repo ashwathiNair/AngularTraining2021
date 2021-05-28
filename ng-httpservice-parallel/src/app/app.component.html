@@ -1,0 +1,37 @@
+<div class="container-12">
+  <table class="table table-bordered table-striped">
+      <tr>
+          <td>
+              <select class="form-control">
+        <option value="">Select State</option>
+        <option *ngFor="let s of states" value="{{s.Id}}">{{s.Name}}</option>
+      </select>
+          </td>
+          <td>
+              <select class="form-control">
+        <option value="">Select City</option>
+        <option *ngFor="let c of cities" value="{{c.Id}}">{{c.Name}}</option>
+      </select>
+          </td>
+      </tr>
+  </table>
+  <hr>
+  <div class="container-12">
+      <table class="table table-bordered table-striped">
+          <thead>
+              <tr>
+                  <td>ProdId</td>
+                  <td>ProdName</td>
+                  <td>CityId</td>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let e of products">
+                  <td>{{e.ProductId}}</td>
+                  <td>{{e.ProductName}}</td>
+                  <td>{{e.CityId}}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
